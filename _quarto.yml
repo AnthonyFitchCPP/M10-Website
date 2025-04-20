@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "M10 Assignment"
@@ -7,11 +8,15 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - href: talks.qmd
-        text: Speaking
+      - href: dashboard.qmd
+        text: Dashboard
+      - href: Essay on Shiny Apps.qmd
+        text: Essay on Shiny Apps
+      - href: Essay on Shiny Live.qmd
+        text: Essay on Shiny Live
     tools:
       - icon: github
-        href: github.com
+        href: https://github.com
 
 format:
   html:

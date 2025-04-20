@@ -1,0 +1,21 @@
+---
+title: "Essay on Shiny Live"
+---
+
+*In Step 3, you learned about serverless Shiny Apps with "Shinylive." What is Shinylive?*
+
+**Answer** - Shinylive helps people put it on their machines without having to worry about all the packages or other materials typically associated with running R. It thus enables the user to run "Shiny Applications", and gets rid of the need for a dedicated server. A software called WebAssembly compiles progamming languages like R and Python into a format that can easily run it on a browser, therefore creating quick access for a user and ease of use for them to just open the link in any browser with just the URL, and no need for any setup. Computations take place on the users hardware therefore this can limit performance.
+
+*Assume that you are also explaining it to your coworkers. How does it differ from the traditional Shiny app introduced in Step 2?*
+
+**Answer** - The traditional shiny apps runs on a backend server ("Shiny Server"), whereas Shinylive runs on the user's browser therefore making it more user friendly and easy to use. The languages are pretty much the same with slight differences but both can use "R" and "Python". Again the main difference is traditional shiny requires a server or cloud whereas Shinylive just hosts the software on static files. Shiny traditional supports all R packages, whereas Shinylive is limited to packages that work with webR.
+
+*What are the pros and cons of Shinylive in comparison with Shiny Apps?*
+
+**Answer** - Pros of shinylive are that no server is required (apps run directly on the browser), Easy to share (can host on static file platforms like GitHub Pages), Faster to bring up and use (no backend setup), Great for teaching and demos (perfect for tutorials), offline capability (the user can download and run the app in their browser with no internet once its loaded).
+
+Some cons of shinylive is its limited R package support, the backend code/source code is visible, unsuitable for proprietary algorithims. The performance is based on teh users hardware, so heavy computation apps can lag or crash on low-end devices.
+
+The best times to use Shinyapps are for internal enterprise dashboards, apps with sensitive data, apps requiring database queries or APIs. Compared to Shinylive the best times to use it are when public facing demos or tutorials, teaching interactive R browser.
+
+This lecture note will become your "Essay on Shiny Live" part of the website.

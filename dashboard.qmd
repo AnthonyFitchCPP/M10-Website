@@ -1,5 +1,5 @@
 ---
-title: "US Accident Site"
+title: "Dashboard"
 format: 
   dashboard:
     orientation: columns
@@ -7,71 +7,71 @@ format:
     github: https://github.com/AnthonyFitchCPP/Test
 logo: Images/CPP_Primary_2C_Green_RGB-300px.png
 logo-alt: Cal Poly Pomona Logo
+execute: 
+  echo: false
 ---
+[← Back to Home](index.html)
 
-# Dashboard
+# US-Road Accident Data
 
 ```{r}
 library(tidyr)
 library(ggplot2)
 library(dplyr)
 
-data_1 <- read.csv("C:/Users/ajfit/OneDrive/Documents/GBA 5910/Final Project/Data_Set_1.csv")
-data_2 <- read.csv("C:/Users/ajfit/OneDrive/Documents/GBA 5910/Final Project/Data_Set_2.csv")
-data_3 <- read.csv("C:/Users/ajfit/OneDrive/Documents/GBA 5910/Final Project/Data_Set_3.csv")
+data_1 <- read.csv("Data_Set_1.csv")
+data_2 <- read.csv("Data_Set_2.csv")
+data_3 <- read.csv("Data_Set_3.csv")
 
 combined_data <- rbind(data_1, data_2, data_3)
 ```
 
 ## Column - Plots
-### Row - Top 10 States by count
+
+### Row - Top 5 States by count
+
 ```{r}
-#| title: 1. Top 10 States by count
+#| title: 1. Top 5 States by count
 # Replace with your actual data frame name
 df <- combined_data
-
-
-top_states <- df %>%
+# Top 5 States
+df %>%
   count(State, sort = TRUE) %>%
-  top_n(10, n)
-
-ggplot(top_states, aes(x = reorder(State, n), y = n)) +
+  slice_max(n, n = 5) %>%
+  ggplot(aes(x = reorder(State, n), y = n)) +
   geom_bar(stat = "identity", fill = "steelblue") +
   coord_flip() +
-  labs(title = "Top 10 States by Count",
-       x = "State", y = "Count") +
+  labs(title = "Top 5 States", x = "State", y = "Count") +
   theme_minimal()
 
 
 ```
-### Row - Top 10 Counties by Count
+
+### Row - Top 5 Counties by Count
 
 ```{r}
-#| title: 2. Top 10 Counties by count
-top_counties <- df %>%
+#| title: 2. Top 5 Counties by count
+df %>%
   count(County, sort = TRUE) %>%
-  top_n(10, n)
-
-ggplot(top_counties, aes(x = reorder(County, n), y = n)) +
-  geom_bar(stat = "identity", fill = "darkorange") +
+  slice_max(n, n = 5) %>%
+  ggplot(aes(x = reorder(County, n), y = n)) +
+  geom_bar(stat = "identity", fill = "darkgreen") +
   coord_flip() +
-  labs(title = "Top 10 Counties by Count",
-       x = "County", y = "Count") +
+  labs(title = "Top 5 Counties", x = "County", y = "Count") +
   theme_minimal()
 ```
+
 ### Row - Top 10 Cities by Count
 
 ```{r}
-#| title: 3. Top 10 Cities by count
-top_cities <- df %>%
+#| title: 3. Top 5 Cities by count
+df %>%
   count(City, sort = TRUE) %>%
-  top_n(10, n)
-
-ggplot(top_cities, aes(x = reorder(City, n), y = n)) +
-  geom_bar(stat = "identity", fill = "seagreen") +
+  slice_max(n, n = 5) %>%
+  ggplot(aes(x = reorder(City, n), y = n)) +
+  geom_bar(stat = "identity", fill = "darkred") +
   coord_flip() +
-  labs(title = "Top 10 Cities by Count",
-       x = "City", y = "Count") +
+  labs(title = "Top 5 Cities", x = "City", y = "Count") +
   theme_minimal()
 ```
 
@@ -116,5 +116,3 @@ combined_table <- data.frame(
 # View the combined table
 print(combined_table)
 ```
-
-
