@@ -1,0 +1,27 @@
+project:
+  type: website
+
+website:
+  title: "M10 Assignment"
+  sidebar:
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: talks.qmd
+        text: Speaking
+    tools:
+      - icon: github
+        href: github.com
+
+format:
+  html:
+    backgroundcolor: black
+    fontcolor: "lightgreen"
+    linkcolor: "lightblue"
+    theme: cosmo
+    css: styles.css
+    toc: false
+    
+
+editor: visual
+

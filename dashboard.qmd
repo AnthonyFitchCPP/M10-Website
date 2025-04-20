@@ -1,0 +1,120 @@
+---
+title: "US Accident Site"
+format: 
+  dashboard:
+    orientation: columns
+    nav-buttons: [github]
+    github: https://github.com/AnthonyFitchCPP/Test
+logo: Images/CPP_Primary_2C_Green_RGB-300px.png
+logo-alt: Cal Poly Pomona Logo
+---
+
+# Dashboard
+
+```{r}
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+
+data_1 <- read.csv("C:/Users/ajfit/OneDrive/Documents/GBA 5910/Final Project/Data_Set_1.csv")
+data_2 <- read.csv("C:/Users/ajfit/OneDrive/Documents/GBA 5910/Final Project/Data_Set_2.csv")
+data_3 <- read.csv("C:/Users/ajfit/OneDrive/Documents/GBA 5910/Final Project/Data_Set_3.csv")
+
+combined_data <- rbind(data_1, data_2, data_3)
+```
+
+## Column - Plots
+### Row - Top 10 States by count
+```{r}
+#| title: 1. Top 10 States by count
+# Replace with your actual data frame name
+df <- combined_data
+
+
+top_states <- df %>%
+  count(State, sort = TRUE) %>%
+  top_n(10, n)
+
+ggplot(top_states, aes(x = reorder(State, n), y = n)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Top 10 States by Count",
+       x = "State", y = "Count") +
+  theme_minimal()
+
+
+```
+### Row - Top 10 Counties by Count
+
+```{r}
+#| title: 2. Top 10 Counties by count
+top_counties <- df %>%
+  count(County, sort = TRUE) %>%
+  top_n(10, n)
+
+ggplot(top_counties, aes(x = reorder(County, n), y = n)) +
+  geom_bar(stat = "identity", fill = "darkorange") +
+  coord_flip() +
+  labs(title = "Top 10 Counties by Count",
+       x = "County", y = "Count") +
+  theme_minimal()
+```
+### Row - Top 10 Cities by Count
+
+```{r}
+#| title: 3. Top 10 Cities by count
+top_cities <- df %>%
+  count(City, sort = TRUE) %>%
+  top_n(10, n)
+
+ggplot(top_cities, aes(x = reorder(City, n), y = n)) +
+  geom_bar(stat = "identity", fill = "seagreen") +
+  coord_flip() +
+  labs(title = "Top 10 Cities by Count",
+       x = "City", y = "Count") +
+  theme_minimal()
+```
+
+## Column - Top State, County, and City Table
+
+```{r}
+#| title: Top 10 State, County, and City Table
+# Load necessary library
+library(dplyr)
+
+# Get top 10 of each category
+top_states <- df %>%
+  count(State, sort = TRUE) %>%
+  top_n(10, n) %>%
+  arrange(desc(n)) %>%
+  select(State)
+
+top_counties <- df %>%
+  count(County, sort = TRUE) %>%
+  top_n(10, n) %>%
+  arrange(desc(n)) %>%
+  select(County)
+
+top_cities <- df %>%
+  count(City, sort = TRUE) %>%
+  top_n(10, n) %>%
+  arrange(desc(n)) %>%
+  select(City)
+
+# Create rank column
+rank_labels <- c("First", "Second", "Third", "Fourth", "Fifth", 
+                 "Sixth", "Seventh", "Eighth", "Ninth", "Tenth")
+
+# Combine into one table
+combined_table <- data.frame(
+  Rank = rank_labels,
+  State = top_states$State,
+  County = top_counties$County,
+  City = top_cities$City
+)
+
+# View the combined table
+print(combined_table)
+```
+
+

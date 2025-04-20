@@ -1,0 +1,11 @@
+---
+title: "Talks"
+---
+
+{{< lipsum 1>}}
+
+File locations: index.qmd is the (site url)
+
+talks/index.qmd is the file location and the URL is (site url)/talks
+
+If you had data in your directory you can put file lcoation: data/monthly.csv then the URL would be (site url)/data/monthly.csv

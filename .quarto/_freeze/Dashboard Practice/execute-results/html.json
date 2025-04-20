@@ -1,0 +1,17 @@
+{
+  "hash": "f20c18d73e97494ddc5c8975f18faa78",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"US Accident Site\"\nformat: \n  dashboard:\n    orientation: columns\n    nav-buttons: [github]\n    github: https://github.com/AnthonyFitchCPP/Test\nlogo: Images/CPP_Primary_2C_Green_RGB-300px.png\nlogo-alt: Cal Poly Pomona Logo\n---\n\n\n\n# Dashboard\n\n\n\n::: {.cell}\n\n:::\n\n\n\n## Column - Plots\n### Row - Top 10 States by count\n\n\n::: {.cell title='1. Top 10 States by count'}\n::: {.cell-output-display}\n![](Dashboard-Practice_files/figure-html/unnamed-chunk-2-1.png){width=768}\n:::\n:::\n\n\n### Row - Top 10 Counties by Count\n\n\n\n::: {.cell title='2. Top 10 Counties by count'}\n::: {.cell-output-display}\n![](Dashboard-Practice_files/figure-html/unnamed-chunk-3-1.png){width=768}\n:::\n:::\n\n\n### Row - Top 10 Cities by Count\n\n\n\n::: {.cell title='3. Top 10 Cities by count'}\n::: {.cell-output-display}\n![](Dashboard-Practice_files/figure-html/unnamed-chunk-4-1.png){width=768}\n:::\n:::\n\n\n\n## Column - Top State, County, and City Table\n\n\n\n::: {.cell title='Top 10 State, County, and City Table'}\n::: {.cell-output .cell-output-stdout}\n\n```\n      Rank State      County          City\n1    First    CA Los Angeles       Houston\n2   Second    TX      Harris     Charlotte\n3    Third    FL      Dallas        Dallas\n4   Fourth    SC Mecklenburg        Austin\n5    Fifth    NC      Travis   Los Angeles\n6    Sixth    NY      Orange       Raleigh\n7  Seventh    PA  Montgomery     Nashville\n8   Eighth    IL        Wake       Atlanta\n9    Ninth    VA    Davidson Oklahoma City\n10   Tenth    GA    Maricopa   Baton Rouge\n```\n\n\n:::\n:::\n",
+    "supporting": [
+      "Dashboard-Practice_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
