@@ -1,0 +1,77 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Anthony Fitch",
+    "section": "",
+    "text": "library(tidyr)\nlibrary(ggplot2)\n\nWarning: package 'ggplot2' was built under R version 4.4.2\n\nlibrary(dplyr)\n\nWarning: package 'dplyr' was built under R version 4.4.3\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n    intersect, setdiff, setequal, union\n\ndata_1 &lt;- read.csv(\"C:/Users/ajfit/OneDrive/Documents/GBA 5910/Final Project/Data_Set_1.csv\")\ndata_2 &lt;- read.csv(\"C:/Users/ajfit/OneDrive/Documents/GBA 5910/Final Project/Data_Set_2.csv\")\ndata_3 &lt;- read.csv(\"C:/Users/ajfit/OneDrive/Documents/GBA 5910/Final Project/Data_Set_3.csv\")\n\ncombined_data &lt;- rbind(data_1, data_2, data_3)\n\n\n\n\n\n\n# Replace with your actual data frame name\ndf &lt;- combined_data\n\n\ntop_states &lt;- df %&gt;%\n  count(State, sort = TRUE) %&gt;%\n  top_n(10, n)\n\nggplot(top_states, aes(x = reorder(State, n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(title = \"Top 10 States by Count\",\n       x = \"State\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ntop_counties &lt;- df %&gt;%\n  count(County, sort = TRUE) %&gt;%\n  top_n(10, n)\n\nggplot(top_counties, aes(x = reorder(County, n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"darkorange\") +\n  coord_flip() +\n  labs(title = \"Top 10 Counties by Count\",\n       x = \"County\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ntop_cities &lt;- df %&gt;%\n  count(City, sort = TRUE) %&gt;%\n  top_n(10, n)\n\nggplot(top_cities, aes(x = reorder(City, n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"seagreen\") +\n  coord_flip() +\n  labs(title = \"Top 10 Cities by Count\",\n       x = \"City\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\n# Load necessary library\nlibrary(dplyr)\n\n# Get top 10 of each category\ntop_states &lt;- df %&gt;%\n  count(State, sort = TRUE) %&gt;%\n  top_n(10, n) %&gt;%\n  arrange(desc(n)) %&gt;%\n  select(State)\n\ntop_counties &lt;- df %&gt;%\n  count(County, sort = TRUE) %&gt;%\n  top_n(10, n) %&gt;%\n  arrange(desc(n)) %&gt;%\n  select(County)\n\ntop_cities &lt;- df %&gt;%\n  count(City, sort = TRUE) %&gt;%\n  top_n(10, n) %&gt;%\n  arrange(desc(n)) %&gt;%\n  select(City)\n\n# Create rank column\nrank_labels &lt;- c(\"First\", \"Second\", \"Third\", \"Fourth\", \"Fifth\", \n                 \"Sixth\", \"Seventh\", \"Eighth\", \"Ninth\", \"Tenth\")\n\n# Combine into one table\ncombined_table &lt;- data.frame(\n  Rank = rank_labels,\n  State = top_states$State,\n  County = top_counties$County,\n  City = top_cities$City\n)\n\n# View the combined table\nprint(combined_table)\n\n      Rank State      County          City\n1    First    CA Los Angeles       Houston\n2   Second    TX      Harris     Charlotte\n3    Third    FL      Dallas        Dallas\n4   Fourth    SC Mecklenburg        Austin\n5    Fifth    NC      Travis   Los Angeles\n6    Sixth    NY      Orange       Raleigh\n7  Seventh    PA  Montgomery     Nashville\n8   Eighth    IL        Wake       Atlanta\n9    Ninth    VA    Davidson Oklahoma City\n10   Tenth    GA    Maricopa   Baton Rouge\n\n\nNotes\n\nDashboard layouts\n\nUse Pages, tabsets, and sidebars",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#column---plots",
+    "href": "index.html#column---plots",
+    "title": "Anthony Fitch",
+    "section": "",
+    "text": "# Replace with your actual data frame name\ndf &lt;- combined_data\n\n\ntop_states &lt;- df %&gt;%\n  count(State, sort = TRUE) %&gt;%\n  top_n(10, n)\n\nggplot(top_states, aes(x = reorder(State, n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(title = \"Top 10 States by Count\",\n       x = \"State\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ntop_counties &lt;- df %&gt;%\n  count(County, sort = TRUE) %&gt;%\n  top_n(10, n)\n\nggplot(top_counties, aes(x = reorder(County, n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"darkorange\") +\n  coord_flip() +\n  labs(title = \"Top 10 Counties by Count\",\n       x = \"County\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ntop_cities &lt;- df %&gt;%\n  count(City, sort = TRUE) %&gt;%\n  top_n(10, n)\n\nggplot(top_cities, aes(x = reorder(City, n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"seagreen\") +\n  coord_flip() +\n  labs(title = \"Top 10 Cities by Count\",\n       x = \"City\", y = \"Count\") +\n  theme_minimal()",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#column---top-state-county-and-city-table",
+    "href": "index.html#column---top-state-county-and-city-table",
+    "title": "Anthony Fitch",
+    "section": "",
+    "text": "# Load necessary library\nlibrary(dplyr)\n\n# Get top 10 of each category\ntop_states &lt;- df %&gt;%\n  count(State, sort = TRUE) %&gt;%\n  top_n(10, n) %&gt;%\n  arrange(desc(n)) %&gt;%\n  select(State)\n\ntop_counties &lt;- df %&gt;%\n  count(County, sort = TRUE) %&gt;%\n  top_n(10, n) %&gt;%\n  arrange(desc(n)) %&gt;%\n  select(County)\n\ntop_cities &lt;- df %&gt;%\n  count(City, sort = TRUE) %&gt;%\n  top_n(10, n) %&gt;%\n  arrange(desc(n)) %&gt;%\n  select(City)\n\n# Create rank column\nrank_labels &lt;- c(\"First\", \"Second\", \"Third\", \"Fourth\", \"Fifth\", \n                 \"Sixth\", \"Seventh\", \"Eighth\", \"Ninth\", \"Tenth\")\n\n# Combine into one table\ncombined_table &lt;- data.frame(\n  Rank = rank_labels,\n  State = top_states$State,\n  County = top_counties$County,\n  City = top_cities$City\n)\n\n# View the combined table\nprint(combined_table)\n\n      Rank State      County          City\n1    First    CA Los Angeles       Houston\n2   Second    TX      Harris     Charlotte\n3    Third    FL      Dallas        Dallas\n4   Fourth    SC Mecklenburg        Austin\n5    Fifth    NC      Travis   Los Angeles\n6    Sixth    NY      Orange       Raleigh\n7  Seventh    PA  Montgomery     Nashville\n8   Eighth    IL        Wake       Atlanta\n9    Ninth    VA    Davidson Oklahoma City\n10   Tenth    GA    Maricopa   Baton Rouge\n\n\nNotes\n\nDashboard layouts\n\nUse Pages, tabsets, and sidebars",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks",
+    "section": "",
+    "text": "Etiam quis tortor luctus, pellentesque ante a, finibus dolor. Phasellus in nibh et magna pulvinar malesuada. Ut nisl ex, sagittis at sollicitudin et, sollicitudin id nunc. In id porta urna. Proin porta dolor dolor, vel dapibus nisi lacinia in. Pellentesque ante mauris, ornare non euismod a, fermentum ut sapien. Proin sed vehicula enim. Aliquam tortor odio, vestibulum vitae odio in, tempor molestie justo. Praesent maximus lacus nec leo maximus blandit.\nFile locations: index.qmd is the (site url)\ntalks/index.qmd is the file location and the URL is (site url)/talks\nIf you had data in your directory you can put file lcoation: data/monthly.csv then the URL would be (site url)/data/monthly.csv",
+    "crumbs": [
+      "Speaking"
+    ]
+  },
+  {
+    "objectID": "Dashboard Practice.html",
+    "href": "Dashboard Practice.html",
+    "title": "US Accident Site",
+    "section": "",
+    "text": "Rank State      County          City\n1    First    CA Los Angeles       Houston\n2   Second    TX      Harris     Charlotte\n3    Third    FL      Dallas        Dallas\n4   Fourth    SC Mecklenburg        Austin\n5    Fifth    NC      Travis   Los Angeles\n6    Sixth    NY      Orange       Raleigh\n7  Seventh    PA  Montgomery     Nashville\n8   Eighth    IL        Wake       Atlanta\n9    Ninth    VA    Davidson Oklahoma City\n10   Tenth    GA    Maricopa   Baton Rouge"
+  },
+  {
+    "objectID": "Dashboard Practice.html#column---top-state-county-and-city-table",
+    "href": "Dashboard Practice.html#column---top-state-county-and-city-table",
+    "title": "US Accident Site",
+    "section": "",
+    "text": "Rank State      County          City\n1    First    CA Los Angeles       Houston\n2   Second    TX      Harris     Charlotte\n3    Third    FL      Dallas        Dallas\n4   Fourth    SC Mecklenburg        Austin\n5    Fifth    NC      Travis   Los Angeles\n6    Sixth    NY      Orange       Raleigh\n7  Seventh    PA  Montgomery     Nashville\n8   Eighth    IL        Wake       Atlanta\n9    Ninth    VA    Davidson Oklahoma City\n10   Tenth    GA    Maricopa   Baton Rouge"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "dashboard.html",
+    "href": "dashboard.html",
+    "title": "US Accident Site",
+    "section": "",
+    "text": "Rank State      County          City\n1    First    CA Los Angeles       Houston\n2   Second    TX      Harris     Charlotte\n3    Third    FL      Dallas        Dallas\n4   Fourth    SC Mecklenburg        Austin\n5    Fifth    NC      Travis   Los Angeles\n6    Sixth    NY      Orange       Raleigh\n7  Seventh    PA  Montgomery     Nashville\n8   Eighth    IL        Wake       Atlanta\n9    Ninth    VA    Davidson Oklahoma City\n10   Tenth    GA    Maricopa   Baton Rouge"
+  },
+  {
+    "objectID": "dashboard.html#column---top-state-county-and-city-table",
+    "href": "dashboard.html#column---top-state-county-and-city-table",
+    "title": "US Accident Site",
+    "section": "",
+    "text": "Rank State      County          City\n1    First    CA Los Angeles       Houston\n2   Second    TX      Harris     Charlotte\n3    Third    FL      Dallas        Dallas\n4   Fourth    SC Mecklenburg        Austin\n5    Fifth    NC      Travis   Los Angeles\n6    Sixth    NY      Orange       Raleigh\n7  Seventh    PA  Montgomery     Nashville\n8   Eighth    IL        Wake       Atlanta\n9    Ninth    VA    Davidson Oklahoma City\n10   Tenth    GA    Maricopa   Baton Rouge"
+  }
+]
